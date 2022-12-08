@@ -50,4 +50,7 @@ public class MakingSureThatPositionIsNumber {
         availablePositions.remove(Integer.valueOf(move));
         return move;
     }
+    public int getMove() {
+        return move;
+    }
 }
