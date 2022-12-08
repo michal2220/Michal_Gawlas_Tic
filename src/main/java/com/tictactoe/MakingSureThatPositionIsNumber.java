@@ -7,6 +7,7 @@ import java.util.Scanner;
 public class MakingSureThatPositionIsNumber {
 
     Scanner scanner = new Scanner(System.in);
+    SimpleText simpleText = new SimpleText();
     int move;
     List<Integer> availablePositions = new ArrayList<>();
     public List<Integer> makingPositionsList(){
@@ -23,28 +24,30 @@ public class MakingSureThatPositionIsNumber {
         return availablePositions;
     }
 
-    public int makingSureNumber(){
-        System.out.println("next move, awailable positions: "+availablePositions);
-        while(!scanner.hasNextInt()){
-            System.out.println("Please enter a number!");
+    public int makingSureNumber() {
+
+        while (!scanner.hasNextInt()) {
+            simpleText.enterNumber();
             scanner.next();
         }
         move = scanner.nextInt();
-        while (move>8){
-            System.out.println("Please enter a number which is lower then 9!");
-            move= scanner.nextInt();
-            System.out.println(availablePositions);
+        while (move > 8) {
+            simpleText.enterNumberNotHigerThen8();
+            move = scanner.nextInt();
         }
-        while(!availablePositions.contains(Integer.valueOf(move))){
-            System.out.println(move+ " already taken!");
-            move=scanner.nextInt();
+        while (!availablePositions.contains(Integer.valueOf(move))) {
+            if (move < 8 && move>=0) {
+                simpleText.alreadyTaken();
+                move = scanner.nextInt();
+            } else if (move>8 && move>0) {
+                simpleText.higherThen8();
+                move = scanner.nextInt();
+            } else if (move<0) {
+                simpleText.lowerThen0();
+                move = scanner.nextInt();
+            }
         }
         availablePositions.remove(Integer.valueOf(move));
-
-        return move;
-    }
-
-    public int getMove() {
         return move;
     }
 }

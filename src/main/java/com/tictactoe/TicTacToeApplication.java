@@ -9,12 +9,12 @@ public class TicTacToeApplication {
         Game game1 = new Game();
         VisualPresentation presentation = new VisualPresentation();
         MakingSureThatPositionIsNumber makingSure = new MakingSureThatPositionIsNumber();
-        Helper helper = new Helper();
+        GamePlay gamePlay = new GamePlay();
 
         presentation.printEmptyBoard();
         game1.prepareBoard();
         game1.enterX_O();
-        helper.gamePlay(presentation,game1,makingSure);
+        gamePlay.gamePlay(presentation,game1,makingSure);
 
 
     }
