@@ -5,10 +5,11 @@ import java.util.List;
 import java.util.Scanner;
 
 public class MakingSureThatPositionIsNumber {
+    private int move;
 
     Scanner scanner = new Scanner(System.in);
     SimpleText simpleText = new SimpleText();
-    int move;
+
     List<Integer> availablePositions = new ArrayList<>();
     public List<Integer> makingPositionsList(){
         availablePositions.add(0);
@@ -23,9 +24,11 @@ public class MakingSureThatPositionIsNumber {
 
         return availablePositions;
     }
+    public List<Integer> gettingList(){
+        return availablePositions;
+    }
 
     public int makingSureNumber() {
-
         while (!scanner.hasNextInt()) {
             simpleText.enterNumber();
             scanner.next();
@@ -39,10 +42,12 @@ public class MakingSureThatPositionIsNumber {
             if (move < 8 && move>=0) {
                 simpleText.alreadyTaken();
                 move = scanner.nextInt();
-            } else if (move>8 && move>0) {
+            }
+            else if (move>8 && move>0) {
                 simpleText.higherThen8();
                 move = scanner.nextInt();
-            } else if (move<0) {
+            }
+            else if (move<0) {
                 simpleText.lowerThen0();
                 move = scanner.nextInt();
             }

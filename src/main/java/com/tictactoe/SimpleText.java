@@ -36,7 +36,9 @@ public class SimpleText {
     public void lowerThen0(){
         System.out.println("Lower then 0!");
     }
-
+public void winner(){
+    System.out.println("X IS WINNER!!");
+}
 
 
 
