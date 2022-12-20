@@ -11,11 +11,20 @@ public class TicTacToeApplication {
         MakingSureThatPositionIsNumber makingSure = new MakingSureThatPositionIsNumber();
         GamePlay gamePlay = new GamePlay();
 
+
         presentation.printEmptyBoard();
         game1.prepareBoard();
-        game1.enterX_O();
-        gamePlay.gamePlay(presentation,game1,makingSure);
+        game1.computerOrPerson();
+        String opponent = game1.getOpponent();
 
+
+        if (opponent.equals("person")) {
+            game1.enterX_O();
+            gamePlay.gamePlayVsPerson(presentation, game1, makingSure);
+        } else if (opponent.equals("computer")){
+            game1.enterX_O();
+            gamePlay.gamePlayVsComputer(presentation, game1, makingSure);
+        }
 
     }
 

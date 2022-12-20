@@ -20,10 +20,10 @@ public class VisualPresentation {
                 "\n\n");
     }
 
-    public void printMove(Game game1){
-        board=("\n| "+game1.gameList.get(0)+" | "+game1.gameList.get(1)+" | "+game1.gameList.get(2)+" |\n" +
-                "| "+game1.gameList.get(3)+" | "+game1.gameList.get(4)+" | "+game1.gameList.get(5)+" |\n"+
-                "| "+game1.gameList.get(6)+" | "+game1.gameList.get(7)+" | "+game1.gameList.get(8)+" |\n");
+    public void printMove(Game game){
+        board=("\n| "+game.gameList.get(0)+" | "+game.gameList.get(1)+" | "+game.gameList.get(2)+" |\n" +
+                "| "+game.gameList.get(3)+" | "+game.gameList.get(4)+" | "+game.gameList.get(5)+" |\n"+
+                "| "+game.gameList.get(6)+" | "+game.gameList.get(7)+" | "+game.gameList.get(8)+" |\n");
         System.out.println(board);
 
     }
