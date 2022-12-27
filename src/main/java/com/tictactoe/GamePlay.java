@@ -11,11 +11,12 @@ public class GamePlay {
     public void gamePlayVsPerson(VisualPresentation visualPresentation,
                                  Game game, MakingSureThatPositionIsNumber sureThatPositionIsNumber) {
 
-        sureThatPositionIsNumber.makingPositionsList();
+        boolean positonsAvailable = sureThatPositionIsNumber.positionCheck();
         boolean winner = game.winningCheck();
-        while(!winner) {
+
+        while(!winner && !positonsAvailable) {
             if (game.getX_o().equals("o") || game.getX_o().equals("O")) {
-                for (int i = 0; !winner; i++) {
+                for (int i = 0; !positonsAvailable && !winner; i++) {
 
                     modulo = i % 2;
                     if (modulo == 0) {
@@ -25,10 +26,13 @@ public class GamePlay {
                         game.gameList.remove(move);
                         game.gameList.add(move, figure);
                         visualPresentation.printMove(game);
+                        positonsAvailable=sureThatPositionIsNumber.positionCheck();
                         winner = game.winningCheck();
+
                         if(!winner) {
                             simpleText.printNextMoveX();
                         }
+
                     } else if (modulo != 0) {
                         figure = "x";
                         sureThatPositionIsNumber.makingSureNumber();
@@ -36,7 +40,9 @@ public class GamePlay {
                         game.gameList.remove(move);
                         game.gameList.add(move, figure);
                         visualPresentation.printMove(game);
+                        positonsAvailable=sureThatPositionIsNumber.positionCheck();
                         winner = game.winningCheck();
+
                         if(!winner) {
                             simpleText.printNextMoveO();
                         }
@@ -44,7 +50,7 @@ public class GamePlay {
                 }
             }
             if (game.getX_o().equals("x") || game.getX_o().equals("X")) {
-                for (int i = 0; !winner; i++) {
+                for (int i = 0; !positonsAvailable && !winner; i++) {
                     modulo = i % 2;
                     if (modulo == 0) {
                         figure = "x";
@@ -53,7 +59,9 @@ public class GamePlay {
                         game.gameList.remove(move);
                         game.gameList.add(move, figure);
                         visualPresentation.printMove(game);
+                        positonsAvailable=sureThatPositionIsNumber.positionCheck();
                         winner = game.winningCheck();
+
                         if(!winner) {
                             simpleText.printNextMoveO();
                         }
@@ -65,7 +73,9 @@ public class GamePlay {
                         game.gameList.remove(move);
                         game.gameList.add(move, figure);
                         visualPresentation.printMove(game);
+                        positonsAvailable=sureThatPositionIsNumber.positionCheck();
                         winner = game.winningCheck();
+
                         if(!winner) {
                             simpleText.printNextMoveX();
                         }
@@ -79,11 +89,12 @@ public class GamePlay {
     public void gamePlayVsComputer (VisualPresentation visualPresentation, Game game,
                                     MakingSureThatPositionIsNumber sureThatPositionIsNumber){
 
-        sureThatPositionIsNumber.makingPositionsList();
+        boolean positonsAvailable = sureThatPositionIsNumber.positionCheck();
         boolean winner = game.winningCheck();
-        while(!winner) {
+
+        while(!winner && !positonsAvailable) {
             if (game.getX_o().equals("o") || game.getX_o().equals("O")) {
-                for (int i = 0; !winner; i++) {
+                for (int i = 0; !positonsAvailable && !winner; i++) {
 
                     modulo = i % 2;
                     if (modulo == 0) {
@@ -93,10 +104,13 @@ public class GamePlay {
                         game.gameList.remove(move);
                         game.gameList.add(move, figure);
                         visualPresentation.printMove(game);
+                        positonsAvailable=sureThatPositionIsNumber.positionCheck();
                         winner = game.winningCheck();
+
                         if(!winner) {
                             simpleText.printNextMoveX();
                         }
+
                     } else if (modulo != 0) {
                         figure = "x";
                         sureThatPositionIsNumber.computerMove();
@@ -104,15 +118,18 @@ public class GamePlay {
                         game.gameList.remove(move);
                         game.gameList.add(move, figure);
                         visualPresentation.printMove(game);
+                        positonsAvailable=sureThatPositionIsNumber.positionCheck();
                         winner = game.winningCheck();
+
                         if(!winner) {
                             simpleText.printNextMoveO();
                         }
+
                     }
                 }
             }
             if (game.getX_o().equals("x") || game.getX_o().equals("X")) {
-                for (int i = 0; !winner; i++) {
+                for (int i = 0; !positonsAvailable && !winner; i++) {
                     modulo = i % 2;
                     if (modulo == 0) {
                         figure = "x";
@@ -121,7 +138,9 @@ public class GamePlay {
                         game.gameList.remove(move);
                         game.gameList.add(move, figure);
                         visualPresentation.printMove(game);
+                        positonsAvailable=sureThatPositionIsNumber.positionCheck();
                         winner = game.winningCheck();
+
                         if(!winner) {
                             simpleText.printNextMoveO();
                         }
@@ -133,6 +152,7 @@ public class GamePlay {
                         game.gameList.remove(move);
                         game.gameList.add(move, figure);
                         visualPresentation.printMove(game);
+                        positonsAvailable=sureThatPositionIsNumber.positionCheck();
                         winner = game.winningCheck();
                         if(!winner) {
                             simpleText.printNextMoveX();

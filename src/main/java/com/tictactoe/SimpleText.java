@@ -2,6 +2,8 @@ package com.tictactoe;
 
 public class SimpleText {
 
+    String text;
+
 
     public void playingWithComputerOrPerson(){
         System.out.println("Please select if You want to play with computer.\n" +
@@ -50,9 +52,12 @@ public class SimpleText {
     public void lowerThen0(){
         System.out.println("Lower then 0!");
     }
-    public void winnerX(){
-    System.out.println("X IS WINNER!!");
-}
+    public String winnerX(){
+
+        text = "X IS WINNER!!";
+        System.out.println(text);
+        return text;
+    }
     public void winnerO(){
         System.out.println("O IS WINNER!!");
     }

@@ -7,9 +7,14 @@ public class Game {
     private int valueOfStartinFigure;
     private String x_o;
     String opponent;
+    public String text;
     SimpleText simpleText = new SimpleText();
+    MakingSureThatPositionIsNumber makingSure = new MakingSureThatPositionIsNumber();
     Scanner scan = new Scanner(System.in);
     List<String> gameList = new ArrayList<>();
+    boolean winner=false;
+    boolean tie=false;
+    boolean noPositionsLeft = false;
 
     @Override
     public String toString() {
@@ -39,7 +44,7 @@ public class Game {
         return result;
     }
 
-    public void prepareBoard() {
+    public List<String> prepareBoard() {
         gameList.add(" ");
         gameList.add(" ");
         gameList.add(" ");
@@ -49,6 +54,8 @@ public class Game {
         gameList.add(" ");
         gameList.add(" ");
         gameList.add(" ");
+
+        return gameList;
     }
 
     public String computerOrPerson(){
@@ -91,12 +98,14 @@ public class Game {
     }
 
     public boolean winningCheck(){
-        boolean winner=false;
+
+
         if (gameList.get(0).equals("x")
                 &&gameList.get(1).equals("x")
                 &&gameList.get(2).equals("x")){
-            simpleText.winnerX();
+            text = simpleText.winnerX();
             winner=true;
+
         }
         if (gameList.get(3).equals("x")
                 &&gameList.get(4).equals("x")
@@ -191,20 +200,19 @@ public class Game {
             simpleText.winnerO();
             winner=true;
         }
-
-        if(!gameList.get(0).equals(" ")&&
-                !gameList.get(1).equals(" ")&&
-                !gameList.get(2).equals(" ")&&
-                !gameList.get(3).equals(" ")&&
-                !gameList.get(4).equals(" ")&&
-                !gameList.get(5).equals(" ")&&
-                !gameList.get(6).equals(" ")&&
-                !gameList.get(7).equals(" ")&&
-                !gameList.get(8).equals(" ") && winner==false) {
+        if (!gameList.get(0).equals(" ") &&
+                !gameList.get(1).equals(" ") &&
+                !gameList.get(2).equals(" ") &&
+                !gameList.get(3).equals(" ") &&
+                !gameList.get(4).equals(" ") &&
+                !gameList.get(5).equals(" ") &&
+                !gameList.get(6).equals(" ") &&
+                !gameList.get(7).equals(" ") &&
+                !gameList.get(8).equals(" ") && winner == false) {
             System.out.println("TIE!!");
-            winner=true;
+            winner = true;
         }
-
         return winner;
     }
+
 }

@@ -7,10 +7,12 @@ import java.util.Scanner;
 
 public class MakingSureThatPositionIsNumber {
     private int move;
+    private boolean anyPositionsLeft = false;
     Scanner scanner = new Scanner(System.in);
     SimpleText simpleText = new SimpleText();
     Random randomGenerator = new Random();
     List<Integer> availablePositions = new ArrayList<>();
+
     public List<Integer> makingPositionsList(){
         availablePositions.add(0);
         availablePositions.add(1);
@@ -65,4 +67,13 @@ public class MakingSureThatPositionIsNumber {
     public int getMove() {
         return move;
     }
+
+    public boolean positionCheck(){
+        int positionSize= availablePositions.size();
+        if (positionSize==0){
+            anyPositionsLeft=true;
+        }
+        return anyPositionsLeft;
+    }
+
 }

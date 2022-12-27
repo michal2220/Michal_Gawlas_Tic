@@ -11,7 +11,7 @@ public class TicTacToeApplication {
         MakingSureThatPositionIsNumber makingSure = new MakingSureThatPositionIsNumber();
         GamePlay gamePlay = new GamePlay();
 
-
+        makingSure.makingPositionsList();
         presentation.printEmptyBoard();
         game1.prepareBoard();
         game1.computerOrPerson();
