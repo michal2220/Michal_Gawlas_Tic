@@ -7,15 +7,11 @@ public class VisualPresentation {
     public void printEmptyBoard(){
         System.out.println("Welcome to TicTacToe!\n|   |   |   |\n|   |   |   |\n|   |   |   |\n" +
                 "Rules are:\n" +
-                "-when asked to type in field number please provide number of filed where You want to\n" +
+                "You pick if You want to play with computer or person\n"+
+                "Next You pick if You want to start with X or O\n"+
+                "When asked to type in field number please provide number of filed where You want to\n" +
                 "set Your figure based on table below:" +
-                "\n| 0 | 1 | 2 |\n| 3 | 4 | 5 |\n| 6 | 7 | 8 |\n" +
-                "-when asked to type in X or O jest type in the figure you pick\n" +
-                "\n" +
-                "Exapmle:\n" +
-                "field: 3\n" +
-                "figure: X\n" +
-                "\n|   |   | X |\n|   |   |   |\n|   |   |   |\n" +
+                "\n| 1 | 2 | 3 |\n| 4 | 5 | 6 |\n| 7 | 8 | 9 |\n" +
                 "ENJOY! :)" +
                 "\n\n");
     }
@@ -27,9 +23,5 @@ public class VisualPresentation {
         System.out.println(board);
 
     }
-
-
-
-
 
 }

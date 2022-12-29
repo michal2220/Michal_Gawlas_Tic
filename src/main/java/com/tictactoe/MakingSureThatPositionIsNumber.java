@@ -35,26 +35,26 @@ public class MakingSureThatPositionIsNumber {
         }
         move = scanner.nextInt();
 
-        while (move > 8) {
+        while (move >= 10) {
             simpleText.enterNumberNotHigerThen8();
             move = scanner.nextInt();
         }
-        while (!availablePositions.contains(move)) {
-            if (move < 8 && move>=0) {
+        while (!availablePositions.contains(move-1)) {
+            if (move <= 9 && move>=1) {
                 simpleText.alreadyTaken();
                 move = scanner.nextInt();
             }
-            else if (move>8 && move>0) {
+            else if (move>=9 && move>1) {
                 simpleText.higherThen8();
                 move = scanner.nextInt();
             }
-            else if (move<0) {
+            else if (move<1) {
                 simpleText.lowerThen0();
                 move = scanner.nextInt();
             }
         }
-        availablePositions.remove(Integer.valueOf(move));
-        return move;
+        availablePositions.remove(Integer.valueOf(move-1));
+        return move-1;
     }
 
     public int computerMove(){
@@ -65,7 +65,7 @@ public class MakingSureThatPositionIsNumber {
         return move;
     }
     public int getMove() {
-        return move;
+        return move-1;
     }
 
     public boolean positionCheck(){
