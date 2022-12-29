@@ -1,12 +1,9 @@
 package com.tictactoe;
 
-import com.tictactoe.tenByTen.GamePlayBig;
-import com.tictactoe.tenByTen.Move;
-import com.tictactoe.tenByTen.MakingSureThatPositionInNumberBig;
-import com.tictactoe.tenByTen.VisualPresentationBig;
+import com.tictactoe.newTry.CreatingArrays;
+import com.tictactoe.newTry.Input;
+import com.tictactoe.newTry.PrintMove;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-import java.util.List;
 
 @SpringBootApplication
 public class TicTacToeApplication {
@@ -33,12 +30,43 @@ public class TicTacToeApplication {
 //        }
 
 
-        MakingSureThatPositionInNumberBig makingSure = new MakingSureThatPositionInNumberBig();
-        VisualPresentationBig vB = new VisualPresentationBig();
-        Move bigPlay = new Move();
-        GamePlayBig playBig = new GamePlayBig();
+//        MakingSureThatPositionInNumberBig makingSure = new MakingSureThatPositionInNumberBig();
+//        VisualPresentationBig vB = new VisualPresentationBig();
+//        Move bigPlay = new Move();
+//        GamePlayBig playBig = new GamePlayBig();
+//
+//        playBig.play10x10(bigPlay,vB,makingSure);
 
-        playBig.play10x10(bigPlay,vB,makingSure);
+
+        CreatingArrays arrays = new CreatingArrays();
+        Input input = new Input();
+        PrintMove printMove = new PrintMove();
+        SimpleText simpleText = new SimpleText();
+
+
+        input.enterArraySize();
+        arrays.createArray(input);
+        input.whichStartingFigure();
+
+
+        arrays.printArrayX(input, simpleText);
+        arrays.printArrayO(input, simpleText);
+        arrays.printArrayX(input, simpleText);
+        arrays.printArrayO(input, simpleText);
+        arrays.printArrayX(input, simpleText);
+        arrays.printArrayO(input, simpleText);
+        arrays.printArrayX(input, simpleText);
+        arrays.printArrayO(input, simpleText);
+
+
+
+
+
+
+
+
+
+
 
     }
 

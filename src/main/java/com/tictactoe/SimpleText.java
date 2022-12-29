@@ -16,20 +16,8 @@ public class SimpleText {
     public void playingAgainstPerson() {
         System.out.println("Playing against person");
     }
-    public void startingWithXOrO(){
-        System.out.println("Please select if You want to start with X or O");
-    }
     public void typeInCorrectStartinOpponent(){
         System.out.println("Please type in 'computer' or 'person' ");
-    }
-    public void typeInCorrectXOrO(){
-        System.out.println("Please type in x or o or X or O!");
-    }
-    public void startingWithO(){
-        System.out.println("o is starting");
-    }
-    public void startingWithX(){
-        System.out.println("x is starting");
     }
     public void printNextMoveO() {
         System.out.println("Next moves O");
@@ -61,6 +49,59 @@ public class SimpleText {
     public void winnerO(){
         System.out.println("O IS WINNER!!");
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public void startingWithXOrO(){
+        System.out.println("Please select if You want to start with X or O");
+    }
+    public void typeInCorrectXOrO(){
+        System.out.println("Please type in x or o or X or O!");
+    }
+    public void startingWithO(){
+        System.out.println("o is starting");
+    }
+    public void startingWithX(){
+        System.out.println("x is starting");
+    }
+    public void horizontalPosition(){
+        System.out.println("Enter horizontal position");
+    }
+    public void verticalPosition(){
+        System.out.println("Enter vertical position");
+    }
+    public void occupiedPosition(){
+        System.out.println("\n !!! Position already occupied !!! \n");
+    }
+    public void arraySizeRequest(){
+        System.out.println("Enter size of the field");
+    }
+    public void biggerThenAllowed(){
+         System.out.println(" !!! Enter numbers from range !!! ");
+     }
+
+
+
 
 
 
