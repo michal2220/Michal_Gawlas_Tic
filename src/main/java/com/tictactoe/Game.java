@@ -6,15 +6,15 @@ public class Game {
 
     private int valueOfStartinFigure;
     private String x_o;
-    String opponent;
+    private String opponent;
     public String text;
     SimpleText simpleText = new SimpleText();
     MakingSureThatPositionIsNumber makingSure = new MakingSureThatPositionIsNumber();
     Scanner scan = new Scanner(System.in);
     List<String> gameList = new ArrayList<>();
-    boolean winner=false;
-    boolean tie=false;
-    boolean noPositionsLeft = false;
+    private boolean winner=false;
+    private boolean tie=false;
+    private boolean noPositionsLeft = false;
 
     @Override
     public String toString() {
@@ -58,7 +58,7 @@ public class Game {
         return gameList;
     }
 
-    public String computerOrPerson(){
+/*    public String computerOrPerson(){
         simpleText.playingWithComputerOrPerson();
         opponent=scan.nextLine();
         while (!opponent.equals("computer") && !opponent.equals("person")){
@@ -71,7 +71,7 @@ public class Game {
             simpleText.playingAgainstPerson();
         }
         return opponent;
-    }
+    }*/
 
     public String getOpponent() {
         return opponent;

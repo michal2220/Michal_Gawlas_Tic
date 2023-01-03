@@ -7,12 +7,13 @@ import java.util.Scanner;
 
 public class Input {
 
+    private int arraySize;
+    private int horizontal;
+    private  int vertical;
+    private  String startingFigure;
+    private  String opponent;
     SimpleText simpleText = new SimpleText();
     Scanner scan = new Scanner(System.in);
-    int arraySize;
-    int horizontal;
-    int vertical;
-    String startingFigure;
 
     @Override
     public boolean equals(Object o) {
@@ -64,6 +65,20 @@ public class Input {
         return startingFigure;
     }
 
+    public String computerOrPerson(){
+        simpleText.playingWithComputerOrPerson();
+        opponent=scan.nextLine();
+        while (!opponent.equals("computer") && !opponent.equals("person")){
+            simpleText.typeInCorrectStartinOpponent();
+            opponent=scan.nextLine();
+        }
+        if (opponent.equals("computer")){
+            simpleText.playingAgainstComputer();
+        } if (opponent.equals("person")){
+            simpleText.playingAgainstPerson();
+        }
+        return opponent;
+    }
     public int horizontalNumberValue(){
 
         simpleText.horizontalPosition();

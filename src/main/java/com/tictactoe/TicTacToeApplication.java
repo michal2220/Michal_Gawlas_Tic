@@ -1,8 +1,8 @@
 package com.tictactoe;
 
 import com.tictactoe.newTry.CreatingArrays;
+import com.tictactoe.newTry.Game;
 import com.tictactoe.newTry.Input;
-import com.tictactoe.newTry.PrintMove;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
@@ -40,33 +40,24 @@ public class TicTacToeApplication {
 
         CreatingArrays arrays = new CreatingArrays();
         Input input = new Input();
-        PrintMove printMove = new PrintMove();
+        Game game = new Game();
         SimpleText simpleText = new SimpleText();
 
+        String opponent = input.computerOrPerson();
 
-        input.enterArraySize();
-        arrays.createArray(input);
-        input.whichStartingFigure();
+        if(opponent.equals("computer")){
+            input.enterArraySize();
+            arrays.createArray(input);
+            input.whichStartingFigure();
 
+            game.gamePlayComputer(arrays,input,simpleText);
+        } if (opponent.equals("person")){
+            input.enterArraySize();
+            arrays.createArray(input);
+            input.whichStartingFigure();
 
-        arrays.printArrayX(input, simpleText);
-        arrays.printArrayO(input, simpleText);
-        arrays.printArrayX(input, simpleText);
-        arrays.printArrayO(input, simpleText);
-        arrays.printArrayX(input, simpleText);
-        arrays.printArrayO(input, simpleText);
-        arrays.printArrayX(input, simpleText);
-        arrays.printArrayO(input, simpleText);
-
-
-
-
-
-
-
-
-
-
+            game.gamePlay(arrays,input,simpleText);
+        }
 
     }
 

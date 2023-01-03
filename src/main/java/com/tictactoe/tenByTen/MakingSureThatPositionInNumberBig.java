@@ -12,7 +12,7 @@ public class MakingSureThatPositionInNumberBig {
     Scanner scanner = new Scanner(System.in);
     SimpleText simpleText = new SimpleText();
     List<Integer> availablePositions = new ArrayList<>();
-    int position;
+    private int position;
 
     public List<Integer> makingPositionsList(){
 

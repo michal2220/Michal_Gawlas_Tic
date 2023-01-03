@@ -5,10 +5,7 @@ import java.util.List;
 
 public class Move {
 
-
-
     List<String> figuresList = new ArrayList<>();
-
 
     public List<String> makingFiguresList(){
 

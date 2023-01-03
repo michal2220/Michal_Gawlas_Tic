@@ -1,7 +1,7 @@
 package com.tictactoe.tenByTen;
 
 public class GamePlayBig {
-    int modulo;
+    private int modulo;
 
     public void play10x10(Move move, VisualPresentationBig vB, MakingSureThatPositionInNumberBig sure){
         move.makingFiguresList();

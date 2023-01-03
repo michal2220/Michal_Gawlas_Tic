@@ -58,20 +58,6 @@ public class SimpleText {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     public void startingWithXOrO(){
         System.out.println("Please select if You want to start with X or O");
     }
