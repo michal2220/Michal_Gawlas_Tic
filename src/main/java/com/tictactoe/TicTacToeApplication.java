@@ -3,6 +3,7 @@ package com.tictactoe;
 import com.tictactoe.newTry.CreatingArrays;
 import com.tictactoe.newTry.Game;
 import com.tictactoe.newTry.Input;
+import com.tictactoe.newTry.WinnigChecker;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
@@ -38,27 +39,30 @@ public class TicTacToeApplication {
 //        playBig.play10x10(bigPlay,vB,makingSure);
 
 
-        CreatingArrays arrays = new CreatingArrays();
+        CreatingArrays creatingArrays = new CreatingArrays();
         Input input = new Input();
         Game game = new Game();
+        WinnigChecker winnigChecker = new WinnigChecker();
         SimpleText simpleText = new SimpleText();
 
+
         String opponent = input.computerOrPerson();
-
-        if(opponent.equals("computer")){
+        if (opponent.equals("computer")) {
             input.enterArraySize();
-            arrays.createArray(input);
+            creatingArrays.createArray(input);
             input.whichStartingFigure();
 
-            game.gamePlayComputer(arrays,input,simpleText);
-        } if (opponent.equals("person")){
+            game.gamePlayComputer(creatingArrays, input, simpleText, winnigChecker);
+        }
+        if (opponent.equals("person")) {
             input.enterArraySize();
-            arrays.createArray(input);
+            creatingArrays.createArray(input);
             input.whichStartingFigure();
 
-            game.gamePlay(arrays,input,simpleText);
+            game.gamePlay(creatingArrays, input, simpleText, winnigChecker);
         }
 
-    }
+        }
 
-}
+
+    }

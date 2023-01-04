@@ -20,10 +20,10 @@ public class SimpleText {
         System.out.println("Please type in 'computer' or 'person' ");
     }
     public void printNextMoveO() {
-        System.out.println("Next moves O");
+        System.out.println("Moves O");
     }
     public void printNextMoveX(){
-        System.out.println("Next moves X");
+        System.out.println("Moves X");
     }
     public void enterNumber(){
         System.out.println("Please enter a number!");
@@ -82,13 +82,12 @@ public class SimpleText {
     public void arraySizeRequest(){
         System.out.println("Enter size of the field");
     }
+    public void tieInfo (){
+        System.out.println("TIE");
+    }
     public void biggerThenAllowed(){
          System.out.println(" !!! Enter numbers from range !!! ");
      }
-
-
-
-
 
 
 }

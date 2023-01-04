@@ -8,10 +8,8 @@ import java.util.Scanner;
 public class Input {
 
     private int arraySize;
-    private int horizontal;
-    private  int vertical;
     private  String startingFigure;
-    private  String opponent;
+    private boolean forException=false;
     SimpleText simpleText = new SimpleText();
     Scanner scan = new Scanner(System.in);
 
@@ -33,9 +31,22 @@ public class Input {
         return result;
     }
 
-    public void enterArraySize(){
-        simpleText.arraySizeRequest();
-        arraySize = scan.nextInt();
+    public int enterArraySize(){
+        try {
+            simpleText.arraySizeRequest();
+            arraySize = scan.nextInt();
+            while (arraySize != 3 && arraySize != 10) {
+                System.out.println("Let's stick to 3 or 10 for now ;)");
+                arraySize = scan.nextInt();
+            }
+            forException=false;
+        } catch (Exception e){
+            System.out.println("error " +e);
+            arraySize=3;
+            System.out.println("It's either 3 or 10, if that's too hard then\n" +
+                    "then size of 3x3 is more than enough for You :P\n");
+        }
+        return arraySize;
     }
 
     public int getArraySize() {
@@ -67,10 +78,10 @@ public class Input {
 
     public String computerOrPerson(){
         simpleText.playingWithComputerOrPerson();
-        opponent=scan.nextLine();
+        String opponent = scan.nextLine();
         while (!opponent.equals("computer") && !opponent.equals("person")){
             simpleText.typeInCorrectStartinOpponent();
-            opponent=scan.nextLine();
+            opponent =scan.nextLine();
         }
         if (opponent.equals("computer")){
             simpleText.playingAgainstComputer();
@@ -82,15 +93,24 @@ public class Input {
     public int horizontalNumberValue(){
 
         simpleText.horizontalPosition();
+        int horizontal;
 
-        horizontal=scan.nextInt();
+        try {
+            while (!scan.hasNextInt()) {
+                simpleText.enterNumber();
+                scan.next();
+            }
+            horizontal = scan.nextInt();
 
-        while (horizontal>=arraySize||horizontal<0){
-            simpleText.biggerThenAllowed();
-            simpleText.horizontalPosition();
-            horizontal=scan.nextInt();
+            while (horizontal >= arraySize || horizontal < 0) {
+                simpleText.biggerThenAllowed();
+                simpleText.horizontalPosition();
+                horizontal = scan.nextInt();
+            }
+        } catch (Exception e){
+            System.out.println("\nCangrats You broke it! Your position will be 0 if available");
+            horizontal=0;
         }
-
         return horizontal;
     }
 
@@ -98,14 +118,24 @@ public class Input {
 
         simpleText.verticalPosition();
 
-        vertical=scan.nextInt();
+        int vertical;
 
-        while (vertical>=arraySize||vertical<0){
-            simpleText.biggerThenAllowed();
-            simpleText.verticalPosition();
-            vertical=scan.nextInt();
+        try {
+            while (!scan.hasNextInt()) {
+                simpleText.enterNumber();
+                scan.next();
+            }
+            vertical = scan.nextInt();
+
+            while (vertical >= arraySize || vertical < 0) {
+                simpleText.biggerThenAllowed();
+                simpleText.verticalPosition();
+                vertical = scan.nextInt();
+            }
+        } catch (Exception e){
+            System.out.println("\nCangrats You broke it! Your position will be 0 if available");
+            vertical=0;
         }
-
         return vertical;
     }
 

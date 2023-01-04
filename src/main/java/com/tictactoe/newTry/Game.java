@@ -4,76 +4,89 @@ import com.tictactoe.SimpleText;
 
 public class Game {
 
-    public void gamePlay(CreatingArrays creatingArrays, Input input, SimpleText simpleText) {
+    public void gamePlay(CreatingArrays creatingArrays, Input input, SimpleText simpleText,WinnigChecker winnigChecker) {
+
+        boolean isTie = winnigChecker.getTie();
+        boolean isWinner= winnigChecker.isWinner();
 
         String startingFigure = input.getStartingFigure();
 
             if (startingFigure.equals("x")) {
-                for (int i = 0; !creatingArrays.isEveryPositionOccupied() && !creatingArrays.isWinner(); i++) {
+                for (int i = 0; !isTie && !winnigChecker.isWinner(); i++) {
 
-                    if (!creatingArrays.isWinner()){
-                        System.out.println("moves X");
+                    if (!winnigChecker.isWinner() && !isTie){
+                        simpleText.printNextMoveX();
                         creatingArrays.printArrayX(input, simpleText);
-                        creatingArrays.winningCheck(input);
+                        winnigChecker.winningCheck(input, creatingArrays);
+                        isTie = winnigChecker.checkingForTie(creatingArrays);
                     }
 
-                    if (!creatingArrays.isWinner()){
-                        System.out.println("moves O");
+                    if (!winnigChecker.isWinner() && !isTie){
+                        simpleText.printNextMoveO();
                         creatingArrays.printArrayO(input, simpleText);
-                        creatingArrays.winningCheck(input);
+                        winnigChecker.winningCheck(input, creatingArrays);
+                        isTie = winnigChecker.checkingForTie(creatingArrays);
                     }
                 }
             }
 
             if (startingFigure.equals("o")) {
-                for (int i = 0; !creatingArrays.isEveryPositionOccupied() && !creatingArrays.isWinner(); i++) {
-                    if (!creatingArrays.isWinner()){
-                        System.out.println("moves O");
+                for (int i = 0; !isTie && !winnigChecker.isWinner(); i++) {
+                    if (!winnigChecker.isWinner()&&!winnigChecker.checkingForTie(creatingArrays)){
+                        simpleText.printNextMoveO();
                         creatingArrays.printArrayO(input, simpleText);
-                        creatingArrays.winningCheck(input);
+                        winnigChecker.winningCheck(input, creatingArrays);
+                        isTie = winnigChecker.checkingForTie(creatingArrays);
                     }
 
-                    if (!creatingArrays.isWinner()){
-                        System.out.println("moves X");
+                    if (!winnigChecker.isWinner()&&!winnigChecker.checkingForTie(creatingArrays)){
+                        simpleText.printNextMoveX();
                         creatingArrays.printArrayX(input, simpleText);
-                        creatingArrays.winningCheck(input);
+                        winnigChecker.winningCheck(input, creatingArrays);
+                        isTie = winnigChecker.checkingForTie(creatingArrays);
                     }
                 }
             }
         }
 
-    public void gamePlayComputer(CreatingArrays creatingArrays, Input input, SimpleText simpleText){
+    public void gamePlayComputer(CreatingArrays creatingArrays, Input input, SimpleText simpleText, WinnigChecker winnigChecker){
+
+        boolean isTie = winnigChecker.getTie();
 
         String startingFigure = input.getStartingFigure();
 
         if(startingFigure.equals("x")){
-            for (int i = 0; !creatingArrays.isEveryPositionOccupied() && !creatingArrays.isWinner() ; i++){
-                if (!creatingArrays.isWinner()){
-                    System.out.println("moves X");
+            for (int i = 0; !isTie && !winnigChecker.isWinner(); i++){
+                if (!winnigChecker.isWinner()){
+                    simpleText.printNextMoveX();
                     creatingArrays.printArrayX(input, simpleText);
-                    creatingArrays.winningCheck(input);
+                    winnigChecker.winningCheck(input, creatingArrays);
+                    isTie = winnigChecker.checkingForTie(creatingArrays);
                 }
 
-                if (!creatingArrays.isWinner()){
-                    System.out.println("moves O");
+                if (!winnigChecker.isWinner()){
+                    simpleText.printNextMoveO();
                     creatingArrays.payingAgainstComputerO();
-                    creatingArrays.winningCheck(input);
+                    winnigChecker.winningCheck(input, creatingArrays);
+                    isTie = winnigChecker.checkingForTie(creatingArrays);
                 }
             }
         }
 
         if(startingFigure.equals("o")){
-            for (int i = 0; !creatingArrays.isEveryPositionOccupied() && !creatingArrays.isWinner() ; i++){
-                if (!creatingArrays.isWinner()){
-                    System.out.println("moves O");
+            for (int i = 0; !isTie && !winnigChecker.isWinner(); i++){
+                if (!winnigChecker.isWinner()){
+                    simpleText.printNextMoveO();
                     creatingArrays.printArrayO(input, simpleText);
-                    creatingArrays.winningCheck(input);
+                    winnigChecker.winningCheck(input, creatingArrays);
+                    isTie = winnigChecker.checkingForTie(creatingArrays);
                 }
 
-                if (!creatingArrays.isWinner()){
-                    System.out.println("moves X");
+                if (!winnigChecker.isWinner()){
+                    simpleText.printNextMoveX();
                     creatingArrays.payingAgainstComputerX();
-                    creatingArrays.winningCheck(input);
+                    winnigChecker.winningCheck(input, creatingArrays);
+                    isTie = winnigChecker.checkingForTie(creatingArrays);
                 }
             }
         }
