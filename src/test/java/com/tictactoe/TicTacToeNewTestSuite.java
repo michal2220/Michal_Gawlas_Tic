@@ -426,4 +426,16 @@ public class TicTacToeNewTestSuite {
         Assertions.assertEquals(true, checker);
 
     }
+
+    @Test
+    void exceptionInInputTest(){
+
+        //Given
+
+        //When
+
+        //Then
+
+    }
+
 }
