@@ -448,8 +448,7 @@ public class TicTacToeNewTestSuite {
 
 
         //When
-        String string = "t";
-        when(forScanningMock.getArraySize()).thenReturn(Integer.valueOf(string));
+        when(forScanningMock.getArraySize()).toString();
 
 
         //Then
