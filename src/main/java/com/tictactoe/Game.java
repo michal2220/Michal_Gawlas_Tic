@@ -1,218 +1,102 @@
 package com.tictactoe;
 
-import java.util.*;
-
 public class Game {
 
-    private int valueOfStartinFigure;
-    private String x_o;
-    private String opponent;
-    public String text;
-    SimpleText simpleText = new SimpleText();
-    MakingSureThatPositionIsNumber makingSure = new MakingSureThatPositionIsNumber();
-    Scanner scan = new Scanner(System.in);
-    List<String> gameList = new ArrayList<>();
-    private boolean winner=false;
-    private boolean tie=false;
-    private boolean noPositionsLeft = false;
+    public void gamePlay(CreatingArrays creatingArrays, Input input, SimpleText simpleText,WinnigChecker winnigChecker) {
 
-    @Override
-    public String toString() {
-        return "Game{" +
-                "x_o='" + x_o + '\'' +
-                ", opponent='" + opponent + '\'' +
-                '}';
+
+        String startingFigure = input.getStartingFigure();
+
+            if (startingFigure.equals("x")) {
+                while (!winnigChecker.checkingForTie(creatingArrays) && !winnigChecker.isWinner()) {
+
+                    boolean exceptionOccurred = false;
+                    newMethodForX(creatingArrays, input, simpleText, winnigChecker, exceptionOccurred);
+
+                    boolean exceptionOccurredForO=false;
+                    newMethodForO(creatingArrays, input, simpleText, winnigChecker, exceptionOccurredForO);
+                }
+            }
+
+            if (startingFigure.equals("o")) {
+                while (!winnigChecker.checkingForTie(creatingArrays) && !winnigChecker.isWinner()) {
+
+                    boolean exceptionOccurredForO=false;
+                    newMethodForO(creatingArrays, input, simpleText, winnigChecker, exceptionOccurredForO);
+
+                    boolean exceptionOccurred = false;
+                    newMethodForX(creatingArrays, input, simpleText, winnigChecker, exceptionOccurred);
+                }
+            }
+        }
+
+    public void gamePlayComputer(CreatingArrays creatingArrays, Input input, SimpleText simpleText, WinnigChecker winnigChecker){
+
+
+        String startingFigure = input.getStartingFigure();
+
+        if(startingFigure.equals("x")){
+            while (!winnigChecker.checkingForTie(creatingArrays) && !winnigChecker.isWinner()) {
+
+                boolean exceptionOccurred = false;
+                newMethodForX(creatingArrays, input, simpleText, winnigChecker, exceptionOccurred);
+
+                if (!winnigChecker.isWinner()){
+                    simpleText.printNextMoveO();
+                    creatingArrays.payingAgainstComputerO();
+                    winnigChecker.winningCheck(input, creatingArrays);
+                    winnigChecker.checkingForTie(creatingArrays);
+                }
+            }
+        }
+
+        if(startingFigure.equals("o")){
+            while (!winnigChecker.checkingForTie(creatingArrays) && !winnigChecker.isWinner()) {
+
+                boolean exceptionOccurredForO=false;
+                newMethodForO(creatingArrays, input, simpleText, winnigChecker, exceptionOccurredForO);
+
+                if (!winnigChecker.isWinner()){
+                    simpleText.printNextMoveX();
+                    creatingArrays.payingAgainstComputerX();
+                    winnigChecker.winningCheck(input, creatingArrays);
+                    winnigChecker.checkingForTie(creatingArrays);
+                }
+            }
+        }
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Game game = (Game) o;
-
-        if (valueOfStartinFigure != game.valueOfStartinFigure) return false;
-        if (!Objects.equals(simpleText, game.simpleText)) return false;
-        return Objects.equals(gameList, game.gameList);
+    private static void newMethodForO(CreatingArrays creatingArrays, Input input, SimpleText simpleText, WinnigChecker winnigChecker, boolean exceptionOccurredForO) {
+        while (!exceptionOccurredForO) {
+            try {
+                if (!winnigChecker.isWinner() && !winnigChecker.getTie()) {
+                    simpleText.printNextMoveO();
+                    creatingArrays.printArrayO(input, simpleText);
+                    winnigChecker.winningCheck(input, creatingArrays);
+                    winnigChecker.checkingForTie(creatingArrays);
+                    exceptionOccurredForO =true;
+                }
+            } catch (Exception e) {
+                System.out.println("Wrong data for O");
+                exceptionOccurredForO =false;
+            }
+        }
     }
 
-    @Override
-    public int hashCode() {
-        int result = valueOfStartinFigure;
-        result = 31 * result + (simpleText != null ? simpleText.hashCode() : 0);
-        result = 31 * result + (gameList != null ? gameList.hashCode() : 0);
-        return result;
+    private static void newMethodForX(CreatingArrays creatingArrays, Input input, SimpleText simpleText, WinnigChecker winnigChecker, boolean exceptionOccurred) {
+        while (!exceptionOccurred) {
+            try {
+                if (!winnigChecker.isWinner() && !winnigChecker.getTie()) {
+                    simpleText.printNextMoveX();
+                    creatingArrays.printArrayX(input, simpleText);
+                    winnigChecker.winningCheck(input, creatingArrays);
+                    winnigChecker.checkingForTie(creatingArrays);
+                    exceptionOccurred=true;
+                }
+            } catch (Exception e) {
+                System.out.println("Wrong data");
+                exceptionOccurred = false;
+            }
+        }
     }
-
-    public List<String> prepareBoard() {
-        gameList.add(" ");
-        gameList.add(" ");
-        gameList.add(" ");
-        gameList.add(" ");
-        gameList.add(" ");
-        gameList.add(" ");
-        gameList.add(" ");
-        gameList.add(" ");
-        gameList.add(" ");
-
-        return gameList;
-    }
-
-/*    public String computerOrPerson(){
-        simpleText.playingWithComputerOrPerson();
-        opponent=scan.nextLine();
-        while (!opponent.equals("computer") && !opponent.equals("person")){
-            simpleText.typeInCorrectStartinOpponent();
-            opponent=scan.nextLine();
-        }
-        if (opponent.equals("computer")){
-            simpleText.playingAgainstComputer();
-        } if (opponent.equals("person")){
-            simpleText.playingAgainstPerson();
-        }
-        return opponent;
-    }*/
-
-    public String getOpponent() {
-        return opponent;
-    }
-
-    public String getX_o() {
-        return x_o;
-    }
-
-    public String enterX_O() {
-
-        simpleText.startingWithXOrO();
-        while (!scan.hasNext("[xoXO]")){
-            simpleText.typeInCorrectXOrO();
-            x_o=scan.nextLine();
-        }
-        x_o=scan.nextLine();
-        if (x_o.equals("o") || x_o.equals("O")) {
-            simpleText.startingWithO();
-        } else if (x_o.equals("x") || x_o.equals("X")) {
-            simpleText.startingWithX();
-        }
-        return  x_o;
-    }
-
-    public boolean winningCheck(){
-
-
-        if (gameList.get(0).equals("x")
-                &&gameList.get(1).equals("x")
-                &&gameList.get(2).equals("x")){
-            text = simpleText.winnerX();
-            winner=true;
-
-        }
-        if (gameList.get(3).equals("x")
-                &&gameList.get(4).equals("x")
-                &&gameList.get(5).equals("x")){
-            simpleText.winnerX();
-            winner=true;
-        }
-        if (gameList.get(6).equals("x")
-                &&gameList.get(7).equals("x")
-                &&gameList.get(8).equals("x")){
-            simpleText.winnerX();
-            winner=true;
-        }
-        if (gameList.get(0).equals("x")
-                &&gameList.get(4).equals("x")
-                &&gameList.get(8).equals("x")){
-            simpleText.winnerX();
-            winner=true;
-        }
-        if (gameList.get(2).equals("x")
-                &&gameList.get(4).equals("x")
-                &&gameList.get(6).equals("x")){
-            simpleText.winnerX();
-            winner=true;
-        }
-        if (gameList.get(0).equals("x")
-                &&gameList.get(3).equals("x")
-                &&gameList.get(6).equals("x")){
-            simpleText.winnerX();
-            winner=true;
-        }
-        if (gameList.get(1).equals("x")
-                &&gameList.get(4).equals("x")
-                &&gameList.get(7).equals("x")){
-            simpleText.winnerX();
-            winner=true;
-        }
-        if (gameList.get(2).equals("x")
-                &&gameList.get(5).equals("x")
-                &&gameList.get(8).equals("x")){
-            simpleText.winnerX();
-            winner=true;
-        }
-
-
-        if (gameList.get(0).equals("o")
-                &&gameList.get(1).equals("o")
-                &&gameList.get(2).equals("o")){
-            simpleText.winnerO();
-            winner=true;
-        }
-        if (gameList.get(3).equals("o")
-                &&gameList.get(4).equals("o")
-                &&gameList.get(5).equals("o")){
-            simpleText.winnerO();
-            winner=true;
-        }
-        if (gameList.get(6).equals("o")
-                &&gameList.get(7).equals("o")
-                &&gameList.get(8).equals("o")){
-            simpleText.winnerO();
-            winner=true;
-        }
-        if (gameList.get(0).equals("o")
-                &&gameList.get(4).equals("o")
-                &&gameList.get(8).equals("o")){
-            simpleText.winnerO();
-            winner=true;
-        }
-        if (gameList.get(2).equals("o")
-                &&gameList.get(4).equals("o")
-                &&gameList.get(6).equals("o")){
-            simpleText.winnerO();
-            winner=true;
-        }
-
-        if (gameList.get(0).equals("o")
-                &&gameList.get(3).equals("o")
-                &&gameList.get(6).equals("o")){
-            simpleText.winnerO();
-            winner=true;
-        }
-        if (gameList.get(1).equals("o")
-                &&gameList.get(4).equals("o")
-                &&gameList.get(7).equals("o")){
-            simpleText.winnerO();
-            winner=true;
-        }
-        if (gameList.get(2).equals("o")
-                &&gameList.get(5).equals("o")
-                &&gameList.get(8).equals("o")){
-            simpleText.winnerO();
-            winner=true;
-        }
-        if (!gameList.get(0).equals(" ") &&
-                !gameList.get(1).equals(" ") &&
-                !gameList.get(2).equals(" ") &&
-                !gameList.get(3).equals(" ") &&
-                !gameList.get(4).equals(" ") &&
-                !gameList.get(5).equals(" ") &&
-                !gameList.get(6).equals(" ") &&
-                !gameList.get(7).equals(" ") &&
-                !gameList.get(8).equals(" ") && winner == false) {
-            System.out.println("TIE!!");
-            winner = true;
-        }
-        return winner;
-    }
-
 }

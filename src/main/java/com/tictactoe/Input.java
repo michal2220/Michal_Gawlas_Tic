@@ -1,6 +1,4 @@
-package com.tictactoe.newTry;
-
-import com.tictactoe.SimpleText;
+package com.tictactoe;
 
 import java.util.Objects;
 import java.util.Scanner;
@@ -9,7 +7,6 @@ public class Input {
 
     private int arraySize;
     private  String startingFigure;
-    private boolean forException=false;
     SimpleText simpleText = new SimpleText();
     Scanner scan = new Scanner(System.in);
 
@@ -31,22 +28,24 @@ public class Input {
         return result;
     }
 
-    public int enterArraySize(){
+    public void enterArraySize(ForScanning forScanning){
         try {
             simpleText.arraySizeRequest();
-            arraySize = scan.nextInt();
+            forScanning.whatArraySize();
+            arraySize = forScanning.getArraySize();
+
             while (arraySize != 3 && arraySize != 10) {
-                System.out.println("Let's stick to 3 or 10 for now ;)");
-                arraySize = scan.nextInt();
+                System.out.println("Let's stick to 3 or 10 for now");getArraySize();
+                forScanning.whatArraySize();
+                arraySize = forScanning.getArraySize();
             }
-            forException=false;
         } catch (Exception e){
-            System.out.println("error " +e);
             arraySize=3;
-            System.out.println("It's either 3 or 10, if that's too hard then\n" +
-                    "then size of 3x3 is more than enough for You :P\n");
+            System.out.println("""
+                    It's either 3 or 10, if that's too hard then
+                    then size of 3x3 is more than enough for You ಠ_ಠ
+                    """);
         }
-        return arraySize;
     }
 
     public int getArraySize() {
@@ -90,7 +89,7 @@ public class Input {
         }
         return opponent;
     }
-    public int horizontalNumberValue(){
+    public int horizontalNumberValue() throws Exception{
 
         simpleText.horizontalPosition();
         int horizontal;
@@ -108,16 +107,14 @@ public class Input {
                 horizontal = scan.nextInt();
             }
         } catch (Exception e){
-            System.out.println("\nCangrats You broke it! Your position will be 0 if available");
-            horizontal=0;
+            throw new Exception();
         }
         return horizontal;
     }
 
-    public int verticalNumberValue(){
+    public int verticalNumberValue() throws Exception{
 
         simpleText.verticalPosition();
-
         int vertical;
 
         try {
@@ -133,8 +130,7 @@ public class Input {
                 vertical = scan.nextInt();
             }
         } catch (Exception e){
-            System.out.println("\nCangrats You broke it! Your position will be 0 if available");
-            vertical=0;
+            throw new Exception();
         }
         return vertical;
     }

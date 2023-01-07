@@ -1,18 +1,12 @@
 package com.tictactoe;
 
 
-import com.tictactoe.newTry.CreatingArrays;
-import com.tictactoe.newTry.Game;
-import com.tictactoe.newTry.Input;
-import com.tictactoe.newTry.WinnigChecker;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.Scanner;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -21,10 +15,9 @@ import static org.mockito.Mockito.when;
 public class TicTacToeNewTestSuite {
 
 
-    com.tictactoe.newTry.Game game = new Game();
-    SimpleText simpleText = new SimpleText();
     WinnigChecker winnigChecker = new WinnigChecker();
     CreatingArrays creatingArraysMock = mock(CreatingArrays.class);
+
 
     @Test
     void testWinningXInFirstRow() {
@@ -50,7 +43,7 @@ public class TicTacToeNewTestSuite {
 
         //Then
 
-        Assertions.assertEquals(true, checker);
+        Assertions.assertTrue(checker);
 
     }
 
@@ -73,7 +66,7 @@ public class TicTacToeNewTestSuite {
         winnigChecker.winningCheckForThree(creatingArraysMock);
         boolean checker = winnigChecker.isWinningCheck();
         //Then
-        Assertions.assertEquals(true, checker);
+        Assertions.assertTrue(checker);
 
     }
 
@@ -96,7 +89,7 @@ public class TicTacToeNewTestSuite {
         winnigChecker.winningCheckForThree(creatingArraysMock);
         boolean checker = winnigChecker.isWinningCheck();
         //Then
-        Assertions.assertEquals(true, checker);
+        Assertions.assertTrue(checker);
 
     }
 
@@ -119,7 +112,7 @@ public class TicTacToeNewTestSuite {
         winnigChecker.winningCheckForThree(creatingArraysMock);
         boolean checker = winnigChecker.isWinningCheck();
         //Then
-        Assertions.assertEquals(true, checker);
+        Assertions.assertTrue(checker);
 
     }
 
@@ -142,7 +135,7 @@ public class TicTacToeNewTestSuite {
         winnigChecker.winningCheckForThree(creatingArraysMock);
         boolean checker = winnigChecker.isWinningCheck();
         //Then
-        Assertions.assertEquals(true, checker);
+        Assertions.assertTrue(checker);
 
     }
 
@@ -165,7 +158,7 @@ public class TicTacToeNewTestSuite {
         winnigChecker.winningCheckForThree(creatingArraysMock);
         boolean checker = winnigChecker.isWinningCheck();
         //Then
-        Assertions.assertEquals(true, checker);
+        Assertions.assertTrue(checker);
 
     }
 
@@ -188,7 +181,7 @@ public class TicTacToeNewTestSuite {
         winnigChecker.winningCheckForThree(creatingArraysMock);
         boolean checker = winnigChecker.isWinningCheck();
         //Then
-        Assertions.assertEquals(true, checker);
+        Assertions.assertTrue(checker);
 
     }
 
@@ -211,7 +204,7 @@ public class TicTacToeNewTestSuite {
         winnigChecker.winningCheckForThree(creatingArraysMock);
         boolean checker = winnigChecker.isWinningCheck();
         //Then
-        Assertions.assertEquals(true, checker);
+        Assertions.assertTrue(checker);
 
     }
 
@@ -239,7 +232,7 @@ public class TicTacToeNewTestSuite {
 
         //Then
 
-        Assertions.assertEquals(true, checker);
+        Assertions.assertTrue(checker);
 
     }
 
@@ -262,7 +255,7 @@ public class TicTacToeNewTestSuite {
         winnigChecker.winningCheckForThree(creatingArraysMock);
         boolean checker = winnigChecker.isWinningCheck();
         //Then
-        Assertions.assertEquals(true, checker);
+        Assertions.assertTrue(checker);
 
     }
 
@@ -285,7 +278,7 @@ public class TicTacToeNewTestSuite {
         winnigChecker.winningCheckForThree(creatingArraysMock);
         boolean checker = winnigChecker.isWinningCheck();
         //Then
-        Assertions.assertEquals(true, checker);
+        Assertions.assertTrue(checker);
 
     }
 
@@ -308,7 +301,7 @@ public class TicTacToeNewTestSuite {
         winnigChecker.winningCheckForThree(creatingArraysMock);
         boolean checker = winnigChecker.isWinningCheck();
         //Then
-        Assertions.assertEquals(true, checker);
+        Assertions.assertTrue(checker);
 
     }
 
@@ -331,7 +324,7 @@ public class TicTacToeNewTestSuite {
         winnigChecker.winningCheckForThree(creatingArraysMock);
         boolean checker = winnigChecker.isWinningCheck();
         //Then
-        Assertions.assertEquals(true, checker);
+        Assertions.assertTrue(checker);
 
     }
 
@@ -354,7 +347,7 @@ public class TicTacToeNewTestSuite {
         winnigChecker.winningCheckForThree(creatingArraysMock);
         boolean checker = winnigChecker.isWinningCheck();
         //Then
-        Assertions.assertEquals(true, checker);
+        Assertions.assertTrue(checker);
 
     }
 
@@ -377,7 +370,7 @@ public class TicTacToeNewTestSuite {
         winnigChecker.winningCheckForThree(creatingArraysMock);
         boolean checker = winnigChecker.isWinningCheck();
         //Then
-        Assertions.assertEquals(true, checker);
+        Assertions.assertTrue(checker);
 
     }
 
@@ -400,7 +393,7 @@ public class TicTacToeNewTestSuite {
         winnigChecker.winningCheckForThree(creatingArraysMock);
         boolean checker = winnigChecker.isWinningCheck();
         //Then
-        Assertions.assertEquals(true, checker);
+        Assertions.assertTrue(checker);
 
     }
 
@@ -419,22 +412,48 @@ public class TicTacToeNewTestSuite {
         bigArray[1][2] = "x";
         bigArray[2][2] = "o";
         when(creatingArraysMock.getBigArray()).thenReturn(bigArray);
+
         //When
         winnigChecker.checkingForTie(creatingArraysMock);
         boolean checker = winnigChecker.getTie();
         //Then
-        Assertions.assertEquals(true, checker);
+        Assertions.assertTrue(checker);
 
     }
 
     @Test
-    void exceptionInInputTest(){
-
+    void exceptionInInputDoesNotThrowTest(){
         //Given
+
+        ForScanning forScanningMock = mock(ForScanning.class);
+        Input input = new Input();
+
 
         //When
 
+        when(forScanningMock.getArraySize()).thenReturn(3);
+
+
         //Then
+        Assertions.assertDoesNotThrow(()->input.enterArraySize(forScanningMock));
+
+    }
+
+    @Test
+    void exceptionInInputDoesThrowsExceptionTest(){
+        //Given
+
+        ForScanning forScanningMock = mock(ForScanning.class);
+        Input input = new Input();
+
+
+        //When
+        String string = "t";
+        when(forScanningMock.getArraySize()).thenReturn(Integer.valueOf(string));
+
+
+        //Then
+        Assertions.assertThrows(Exception.class,()->input.enterArraySize(forScanningMock));
 
     }
 
