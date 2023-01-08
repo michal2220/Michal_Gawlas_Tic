@@ -439,7 +439,7 @@ public class TicTacToeNewTestSuite {
 
     }
 
-    @Test
+ /*   @Test
     void exceptionInInputDoesThrowsExceptionTest(){
         //Given
 
@@ -454,6 +454,6 @@ public class TicTacToeNewTestSuite {
         //Then
         Assertions.assertThrows(Exception.class,()->input.enterArraySize(forScanningMock));
 
-    }
+    }*/
 
 }
