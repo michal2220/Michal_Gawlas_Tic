@@ -28,7 +28,7 @@ public class Input {
         return result;
     }
 
-    public void enterArraySize(ForScanning forScanning) throws Exception{
+    public void enterArraySize(ForScanning forScanning){
             simpleText.arraySizeRequest();
             forScanning.whatArraySize();
             arraySize = forScanning.getArraySize();
@@ -89,7 +89,7 @@ public class Input {
         }
         return opponent;
     }
-    public int horizontalNumberValue() throws Exception{
+    public int horizontalNumberValue(){
 
         simpleText.horizontalPosition();
         int horizontal;
@@ -108,7 +108,7 @@ public class Input {
         return horizontal;
     }
 
-    public int verticalNumberValue() throws Exception{
+    public int verticalNumberValue() {
 
         simpleText.verticalPosition();
         int vertical;

@@ -27,7 +27,7 @@ public class CreatingArrays {
         return bigArray;
     }
 
-    public void printArrayX(Input input, SimpleText simpleText) throws Exception{
+    public void printArrayX(Input input, SimpleText simpleText){
 
             int horizontal = input.horizontalNumberValue();
             int vertical = input.verticalNumberValue();
@@ -42,7 +42,7 @@ public class CreatingArrays {
             loopForPrinting();
     }
 
-    public void printArrayO(Input input, SimpleText simpleText) throws Exception{
+    public void printArrayO(Input input, SimpleText simpleText){
 
             int horizontal = input.horizontalNumberValue();
             int vertical = input.verticalNumberValue();
