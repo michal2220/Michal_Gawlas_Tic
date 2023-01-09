@@ -1,6 +1,6 @@
 package com.tictactoe;
 
-public class WinnigChecker {
+public class WinningChecker {
 
     SimpleText simpleText = new SimpleText();
     private boolean isTie = false;
@@ -24,9 +24,7 @@ public class WinnigChecker {
                 System.out.println("Winner");
                 winner=true;
             }
-
         }
-
     }
 
     public boolean isWinner() {
@@ -36,7 +34,7 @@ public class WinnigChecker {
     public void winningCheckForThree(CreatingArrays creatingArrays){
 
         String[][] bigArray = creatingArrays.getBigArray();
-        String[] insideArray = creatingArrays.getInsideArray();
+        String[] insideArray;
 
         for (int i = 0; i < bigArray.length; i++) {
             insideArray = bigArray[i];
@@ -88,7 +86,7 @@ public class WinnigChecker {
     public void winningCheckForTen(CreatingArrays creatingArrays){
 
         String[][] bigArray = creatingArrays.getBigArray();
-        String[] insideArray = creatingArrays.getInsideArray();
+        String[] insideArray;
 
         for (int i = 0; i < bigArray.length; i++) {
             insideArray = bigArray[i];
@@ -137,7 +135,6 @@ public class WinnigChecker {
     public boolean checkingForTie(CreatingArrays creatingArrays){
 
         String[][] bigArray = creatingArrays.getBigArray();
-        String[] insideArray = creatingArrays.getInsideArray();
 
         boolean isEverythingOccupied=true;
 

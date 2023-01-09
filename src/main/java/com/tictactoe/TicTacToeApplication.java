@@ -7,29 +7,40 @@ public class TicTacToeApplication {
 
     public static void main(String[] args) {
 
+
         CreatingArrays creatingArrays = new CreatingArrays();
         Input input = new Input();
         Game game = new Game();
-        WinnigChecker winnigChecker = new WinnigChecker();
+        WinningChecker winningChecker = new WinningChecker();
         SimpleText simpleText = new SimpleText();
         ForScanning forScanning = new ForScanning();
 
 
         String opponent = input.computerOrPerson();
-        if (opponent.equals("computer")) {
-            input.enterArraySize(forScanning);
+        if (opponent.equals("computer") || opponent.equals("COMPUTER")) {
+
+            try {
+                input.enterArraySize(forScanning);
+            } catch (Exception e) {
+                input.wrongInputForArray();
+            }
+
             creatingArrays.createArray(input);
             input.whichStartingFigure();
-
-            game.gamePlayComputer(creatingArrays, input, simpleText, winnigChecker);
+            game.gamePlayComputer(creatingArrays, input, simpleText, winningChecker);
         }
-        if (opponent.equals("person")) {
-            input.enterArraySize(forScanning);
+
+        if (opponent.equals("person") || opponent.equals("PERSON")) {
+
+            try {
+                input.enterArraySize(forScanning);
+            } catch (Exception e) {
+                input.wrongInputForArray();
+            }
+
             creatingArrays.createArray(input);
             input.whichStartingFigure();
-
-            game.gamePlay(creatingArrays, input, simpleText, winnigChecker);
-        }
-
+            game.gamePlay(creatingArrays, input, simpleText, winningChecker);
         }
     }
+}

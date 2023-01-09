@@ -7,8 +7,6 @@ public class ForScanning {
     Scanner scanner = new Scanner(System.in);
     private int arraySize;
 
-
-
     public void whatArraySize(){
 
         arraySize = scanner.nextInt();

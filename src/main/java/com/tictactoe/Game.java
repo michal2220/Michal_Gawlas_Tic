@@ -2,78 +2,78 @@ package com.tictactoe;
 
 public class Game {
 
-    public void gamePlay(CreatingArrays creatingArrays, Input input, SimpleText simpleText,WinnigChecker winnigChecker) {
+    public void gamePlay(CreatingArrays creatingArrays, Input input, SimpleText simpleText, WinningChecker winningChecker) {
 
 
         String startingFigure = input.getStartingFigure();
 
-            if (startingFigure.equals("x")) {
-                while (!winnigChecker.checkingForTie(creatingArrays) && !winnigChecker.isWinner()) {
+            if (startingFigure.equals("x") || startingFigure.equals("X")) {
+                while (!winningChecker.checkingForTie(creatingArrays) && !winningChecker.isWinner()) {
 
                     boolean exceptionOccurred = false;
-                    newMethodForX(creatingArrays, input, simpleText, winnigChecker, exceptionOccurred);
+                    newMethodForX(creatingArrays, input, simpleText, winningChecker, exceptionOccurred);
 
                     boolean exceptionOccurredForO=false;
-                    newMethodForO(creatingArrays, input, simpleText, winnigChecker, exceptionOccurredForO);
+                    newMethodForO(creatingArrays, input, simpleText, winningChecker, exceptionOccurredForO);
                 }
             }
 
-            if (startingFigure.equals("o")) {
-                while (!winnigChecker.checkingForTie(creatingArrays) && !winnigChecker.isWinner()) {
+            if (startingFigure.equals("o") || startingFigure.equals("O")) {
+                while (!winningChecker.checkingForTie(creatingArrays) && !winningChecker.isWinner()) {
 
                     boolean exceptionOccurredForO=false;
-                    newMethodForO(creatingArrays, input, simpleText, winnigChecker, exceptionOccurredForO);
+                    newMethodForO(creatingArrays, input, simpleText, winningChecker, exceptionOccurredForO);
 
                     boolean exceptionOccurred = false;
-                    newMethodForX(creatingArrays, input, simpleText, winnigChecker, exceptionOccurred);
+                    newMethodForX(creatingArrays, input, simpleText, winningChecker, exceptionOccurred);
                 }
             }
         }
 
-    public void gamePlayComputer(CreatingArrays creatingArrays, Input input, SimpleText simpleText, WinnigChecker winnigChecker){
+    public void gamePlayComputer(CreatingArrays creatingArrays, Input input, SimpleText simpleText, WinningChecker winningChecker){
 
 
         String startingFigure = input.getStartingFigure();
 
-        if(startingFigure.equals("x")){
-            while (!winnigChecker.checkingForTie(creatingArrays) && !winnigChecker.isWinner()) {
+        if(startingFigure.equals("x") || startingFigure.equals("X")){
+            while (!winningChecker.checkingForTie(creatingArrays) && !winningChecker.isWinner()) {
 
                 boolean exceptionOccurred = false;
-                newMethodForX(creatingArrays, input, simpleText, winnigChecker, exceptionOccurred);
+                newMethodForX(creatingArrays, input, simpleText, winningChecker, exceptionOccurred);
 
-                if (!winnigChecker.isWinner()){
+                if (!winningChecker.isWinner()){
                     simpleText.printNextMoveO();
                     creatingArrays.payingAgainstComputerO();
-                    winnigChecker.winningCheck(input, creatingArrays);
-                    winnigChecker.checkingForTie(creatingArrays);
+                    winningChecker.winningCheck(input, creatingArrays);
+                    winningChecker.checkingForTie(creatingArrays);
                 }
             }
         }
 
-        if(startingFigure.equals("o")){
-            while (!winnigChecker.checkingForTie(creatingArrays) && !winnigChecker.isWinner()) {
+        if(startingFigure.equals("o") || startingFigure.equals("O")){
+            while (!winningChecker.checkingForTie(creatingArrays) && !winningChecker.isWinner()) {
 
                 boolean exceptionOccurredForO=false;
-                newMethodForO(creatingArrays, input, simpleText, winnigChecker, exceptionOccurredForO);
+                newMethodForO(creatingArrays, input, simpleText, winningChecker, exceptionOccurredForO);
 
-                if (!winnigChecker.isWinner()){
+                if (!winningChecker.isWinner()){
                     simpleText.printNextMoveX();
                     creatingArrays.payingAgainstComputerX();
-                    winnigChecker.winningCheck(input, creatingArrays);
-                    winnigChecker.checkingForTie(creatingArrays);
+                    winningChecker.winningCheck(input, creatingArrays);
+                    winningChecker.checkingForTie(creatingArrays);
                 }
             }
         }
     }
 
-    private static void newMethodForO(CreatingArrays creatingArrays, Input input, SimpleText simpleText, WinnigChecker winnigChecker, boolean exceptionOccurredForO) {
+    private static void newMethodForO(CreatingArrays creatingArrays, Input input, SimpleText simpleText, WinningChecker winningChecker, boolean exceptionOccurredForO) {
         while (!exceptionOccurredForO) {
             try {
-                if (!winnigChecker.isWinner() && !winnigChecker.getTie()) {
+                if (!winningChecker.isWinner() && !winningChecker.getTie()) {
                     simpleText.printNextMoveO();
                     creatingArrays.printArrayO(input, simpleText);
-                    winnigChecker.winningCheck(input, creatingArrays);
-                    winnigChecker.checkingForTie(creatingArrays);
+                    winningChecker.winningCheck(input, creatingArrays);
+                    winningChecker.checkingForTie(creatingArrays);
                     exceptionOccurredForO =true;
                 }
             } catch (Exception e) {
@@ -83,14 +83,14 @@ public class Game {
         }
     }
 
-    private static void newMethodForX(CreatingArrays creatingArrays, Input input, SimpleText simpleText, WinnigChecker winnigChecker, boolean exceptionOccurred) {
+    private static void newMethodForX(CreatingArrays creatingArrays, Input input, SimpleText simpleText, WinningChecker winningChecker, boolean exceptionOccurred) {
         while (!exceptionOccurred) {
             try {
-                if (!winnigChecker.isWinner() && !winnigChecker.getTie()) {
+                if (!winningChecker.isWinner() && !winningChecker.getTie()) {
                     simpleText.printNextMoveX();
                     creatingArrays.printArrayX(input, simpleText);
-                    winnigChecker.winningCheck(input, creatingArrays);
-                    winnigChecker.checkingForTie(creatingArrays);
+                    winningChecker.winningCheck(input, creatingArrays);
+                    winningChecker.checkingForTie(creatingArrays);
                     exceptionOccurred=true;
                 }
             } catch (Exception e) {

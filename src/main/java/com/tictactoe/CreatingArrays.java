@@ -4,17 +4,13 @@ import java.util.Random;
 
 public class CreatingArrays {
 
-    SimpleText simpleText = new SimpleText();
     private int arraySize;
-    private boolean winningCheck =false;
-    private boolean winner=false;
-    private boolean isTie = false;
     private String[][] bigArray;
     private String [] insideArray;
     private final Random randomGenerator = new Random();
 
 
-    public String[][] createArray(Input input){
+    public void createArray(Input input){
 
         arraySize = input.getArraySize();
         bigArray = new String[arraySize][arraySize];
@@ -25,23 +21,16 @@ public class CreatingArrays {
                 bigArray[i][j]=" ";
             }
         }
-        return bigArray;
     }
 
     public String[][] getBigArray() {
         return bigArray;
     }
 
-    public String[] getInsideArray() {
-        return insideArray;
-    }
-
     public void printArrayX(Input input, SimpleText simpleText) throws Exception{
 
-        try {
             int horizontal = input.horizontalNumberValue();
             int vertical = input.verticalNumberValue();
-
 
             while (!bigArray[horizontal][vertical].equals(" ")) {
                 simpleText.occupiedPosition();
@@ -51,14 +40,10 @@ public class CreatingArrays {
             bigArray[horizontal][vertical] = "x";
             topRowPrint();
             loopForPrinting();
-        } catch (Exception e){
-            throw new Exception();
-        }
     }
 
     public void printArrayO(Input input, SimpleText simpleText) throws Exception{
 
-        try {
             int horizontal = input.horizontalNumberValue();
             int vertical = input.verticalNumberValue();
 
@@ -70,9 +55,6 @@ public class CreatingArrays {
             bigArray[horizontal][vertical] = "o";
             topRowPrint();
             loopForPrinting();
-        } catch (Exception e){
-            throw new Exception();
-        }
     }
 
     public void loopForPrinting() {

@@ -28,8 +28,7 @@ public class Input {
         return result;
     }
 
-    public void enterArraySize(ForScanning forScanning){
-        try {
+    public void enterArraySize(ForScanning forScanning) throws Exception{
             simpleText.arraySizeRequest();
             forScanning.whatArraySize();
             arraySize = forScanning.getArraySize();
@@ -39,13 +38,14 @@ public class Input {
                 forScanning.whatArraySize();
                 arraySize = forScanning.getArraySize();
             }
-        } catch (Exception e){
-            arraySize=3;
-            System.out.println("""
-                    It's either 3 or 10, if that's too hard then
+    }
+
+    public void wrongInputForArray(){
+        System.out.println("""
+                    It's either 3 or 10, if that's too hard
                     then size of 3x3 is more than enough for You ಠ_ಠ
                     """);
-        }
+        arraySize=3;
     }
 
     public int getArraySize() {
@@ -78,13 +78,13 @@ public class Input {
     public String computerOrPerson(){
         simpleText.playingWithComputerOrPerson();
         String opponent = scan.nextLine();
-        while (!opponent.equals("computer") && !opponent.equals("person")){
+        while (!opponent.equals("computer") && !opponent.equals("person")&& !opponent.equals("COMPUTER") && !opponent.equals("PERSON")){
             simpleText.typeInCorrectStartinOpponent();
             opponent =scan.nextLine();
         }
-        if (opponent.equals("computer")){
+        if (opponent.equals("computer") || opponent.equals("COMPUTER")){
             simpleText.playingAgainstComputer();
-        } if (opponent.equals("person")){
+        } if (opponent.equals("person") || opponent.equals("PERSON")){
             simpleText.playingAgainstPerson();
         }
         return opponent;
@@ -94,7 +94,6 @@ public class Input {
         simpleText.horizontalPosition();
         int horizontal;
 
-        try {
             while (!scan.hasNextInt()) {
                 simpleText.enterNumber();
                 scan.next();
@@ -106,9 +105,6 @@ public class Input {
                 simpleText.horizontalPosition();
                 horizontal = scan.nextInt();
             }
-        } catch (Exception e){
-            throw new Exception();
-        }
         return horizontal;
     }
 
@@ -117,7 +113,6 @@ public class Input {
         simpleText.verticalPosition();
         int vertical;
 
-        try {
             while (!scan.hasNextInt()) {
                 simpleText.enterNumber();
                 scan.next();
@@ -129,9 +124,7 @@ public class Input {
                 simpleText.verticalPosition();
                 vertical = scan.nextInt();
             }
-        } catch (Exception e){
-            throw new Exception();
-        }
+
         return vertical;
     }
 
